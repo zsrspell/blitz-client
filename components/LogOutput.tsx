@@ -14,7 +14,7 @@ export default function LogOutput() {
     return (
         <div className="leading-6 font-mono text-gray-200 bg-gray-800 rounded-xl w-full h-48 my-8 p-4 overflow-hidden"
              ref={output}>
-            <pre>{log.join("\n")}</pre>
+            {log.flatMap((l, i) => <pre key={i} className={l.error ? "text-red-600" : "text-gray-200"}>{l.message}</pre>)}
         </div>
     );
 }

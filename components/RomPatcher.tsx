@@ -56,6 +56,13 @@ export default function RomPatcher(props: RomPatcherProps) {
                     writeMessage(ev.data.message);
                 }
 
+                if (ev.data.type === "ERROR") {
+                    writeMessage("\nEncountered an error while patching:", true);
+                    writeMessage("\t" + ev.data.message, true);
+                    writeMessage("\nAre you using a valid Ocarina of Time 1.0 (US) ROM?", true);
+                    setWorking(false);
+                }
+
                 if (ev.data.type === "FINISHED") {
                     const blob = new Blob([ev.data.result as ArrayBuffer], {
                         type: "application/octet-stream"

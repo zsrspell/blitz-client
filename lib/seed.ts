@@ -27,7 +27,7 @@ export async function generateSeed(spoilerLog: boolean = true): Promise<Seed> {
 }
 
 export async function getSeed(id: string): Promise<Seed> {
-    const response = await fetch(`http://localhost:3000/api/seeds/${id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/seeds/${id}`, {
         method: "GET",
     });
 
@@ -39,7 +39,7 @@ export async function getSeed(id: string): Promise<Seed> {
 }
 
 export async function getPatchData(id: string): Promise<ArrayBuffer> {
-    const response = await fetch(`http://localhost:3000/api/seeds/${id}/patch`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/seeds/${id}/patch`, {
         method: "GET",
     });
 

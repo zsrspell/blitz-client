@@ -1,8 +1,8 @@
 import React from "react";
 
 interface LogContextProps {
-    log: string[];
-    writeMessage: (msg: string) => void;
+    log: { message: string, error: boolean }[];
+    writeMessage: (msg: string, error?: boolean) => void;
 }
 
 const noop = () => {
@@ -16,12 +16,12 @@ const LogContext = React.createContext<LogContextProps>({
 export const useLog = () => React.useContext(LogContext);
 
 export default function LogProvider(props: React.PropsWithChildren<any>) {
-    const [log, setLog] = React.useState<string[]>([]);
+    const [log, setLog] = React.useState<{ message: string, error: boolean }[]>([]);
 
     const context: LogContextProps = {
         log: log,
-        writeMessage: (message: string) => {
-            setLog(state => [...state, message]);
+        writeMessage: (message: string, error: boolean = false) => {
+            setLog(state => [...state, {message, error}]);
         }
     }
 
