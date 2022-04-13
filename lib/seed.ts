@@ -49,3 +49,15 @@ export async function getPatchData(id: string): Promise<ArrayBuffer> {
         throw new Error("failed to retrieve patch data");
     }
 }
+
+export async function getSpoilerLog(id: string): Promise<Record<string, any> | null> {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/seeds/${id}/spoiler`, {
+        method: "GET"
+    });
+
+    if (response.status === 200) {
+        return response.json();
+    } else {
+        return null;
+    }
+}

@@ -4,14 +4,14 @@ import {useRouter} from "next/router";
 
 export default function SeedGenerator() {
     const router = useRouter();
-
+    const [generateLog, setGenerateLog] = React.useState(true);
     const [working, setWorking] = React.useState(false);
 
     const onButtonClicked = async () => {
         if (!working) {
             setWorking(true);
 
-            const seed = await generateSeed();
+            const seed = await generateSeed(generateLog);
             await router.push(`/seed/${seed.id}`);
         }
     }
@@ -30,12 +30,19 @@ export default function SeedGenerator() {
 
             <div className="text-center mt-8">
                 {!working ? (
-                    <button onClick={onButtonClicked}
-                            className="bg-yellow-300 border-4 border-white px-4 py-2 rounded font-heading text-2xl text-gray-900">
-                        Play Triforce Blitz now!
-                    </button>
+                    <div className="flex flex-col items-center">
+                        <button onClick={onButtonClicked}
+                                className="bg-yellow-300 border-4  w-1/3 border-white px-4 py-2 rounded font-heading text-2xl text-gray-900">
+                            Play Triforce Blitz now!
+                        </button>
+                        <label className="text-white font-heading tracking-wide my-3">
+                            <input type="checkbox" onChange={ev => setGenerateLog(ev.target.checked)} checked={generateLog}/>
+                                Generate a spoiler log for the seed.
+                        </label>
+                    </div>
                 ) : (
-                    <div className="font-heading text-3xl text-yellow-300 tracking-wide">Please wait, generating your seed...</div>
+                    <div className="font-heading text-3xl text-yellow-300 tracking-wide">Please wait, generating your
+                        seed...</div>
                 )}
             </div>
         </div>
