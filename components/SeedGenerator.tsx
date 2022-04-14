@@ -32,7 +32,7 @@ export default function SeedGenerator() {
                 {!working ? (
                     <div className="flex flex-col items-center">
                         <button onClick={onButtonClicked}
-                                className="bg-yellow-300 border-4  w-1/3 border-white px-4 py-2 rounded font-heading text-2xl text-gray-900">
+                                className="bg-yellow-300 border-4 w-96t border-white px-4 py-2 rounded font-heading text-2xl text-gray-900">
                             Play Triforce Blitz now!
                         </button>
                         <label className="text-white font-heading tracking-wide my-3">

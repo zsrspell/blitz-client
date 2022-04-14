@@ -22,6 +22,7 @@ export default function SpoilerLog(props: SpoilerLogProps) {
                         </button>
 
                         {Object.keys(props.spoilerLog).map(key => (
+                            // @ts-ignore
                             <SpoilerLogCategory key={key} name={key} category={props.spoilerLog[key]}/>
                         ))}
                     </React.Fragment>
