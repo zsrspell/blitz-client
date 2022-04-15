@@ -11,11 +11,13 @@ export interface SeedPageProps {
 }
 
 export default function SeedPage(props: SeedPageProps) {
+    const filename = "TriforceBlitz_" + props.seed.generatedOn;
+
     return (
         <div>
             <Patcher seed={props.seed} />
             <SeedInformation seed={props.seed}/>
-            <SpoilerLog spoilerLog={props.spoilerLog} />
+            <SpoilerLog spoilerLog={props.spoilerLog} outFilename={filename} seedId={props.seed.id}/>
         </div>
     );
 }

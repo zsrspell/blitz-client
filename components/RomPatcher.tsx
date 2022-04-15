@@ -1,6 +1,11 @@
 import React from "react";
 import {useLog} from "../hooks/useLog";
 import {getPatchData} from "../lib/seed";
+import Subheading from "./typography/Subheading";
+import Paragraph from "./typography/Paragraph";
+import Button from "./ui/Button";
+import {sanitizeFilename} from "../lib/util";
+import LogOutput from "./LogOutput";
 
 interface RomPatcherProps {
     seedId: string;
@@ -14,13 +19,17 @@ export default function RomPatcher(props: RomPatcherProps) {
     const [outRom, setOutRom] = React.useState<Blob | null>(null);
     const [working, setWorking] = React.useState(false);
 
+    const downloadRom = (blob: Blob) => {
+        const objectUrl = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = objectUrl;
+        link.download = sanitizeFilename(props.outFilename) + ".z64";
+        link.click();
+    }
+
     const downloadPatchedRom = () => {
         if (outRom !== null) {
-            const objectUrl = URL.createObjectURL(outRom);
-            const link = document.createElement("a");
-            link.href = objectUrl;
-            link.download = props.outFilename + ".z64";
-            link.click();
+            downloadRom(outRom);
         }
     }
 
@@ -32,6 +41,8 @@ export default function RomPatcher(props: RomPatcherProps) {
             }
 
             setWorking(true);
+            setOutRom(null);
+
             if (props.onStart) {
                 props.onStart();
             }
@@ -72,6 +83,7 @@ export default function RomPatcher(props: RomPatcherProps) {
                     const t = Math.floor((finishTime - startTime) / 100) / 10;
                     writeMessage(`Compression finished in ${t} seconds. Enjoy!!`);
                     setOutRom(blob);
+                    downloadRom(blob);
                     setWorking(false);
                 }
             };
@@ -80,39 +92,28 @@ export default function RomPatcher(props: RomPatcherProps) {
 
     return (
         <div>
-            {outRom === null && !working &&
+            <Paragraph>
+                If you are playing on an emulator, you can use the patcher to apply this seed to a ROM. If you
+                are using the Wii Virtual Console, you can either inject the patched ROM into a WAD file or
+                download the Patch file and use the official patcher.
+            </Paragraph>
+
+            {!working ? (
                 <React.Fragment>
                     <div className="flex flex-row align-middle">
                         <input ref={fileInput} type="file"
-                               className="bg-white px-4 py-2 rounded font-heading text-2xl mr-4 w-1/2"/>
-                        <button
-                            className="bg-yellow-300 border-4 border-yellow-500 px-4 py-2 rounded font-heading text-2xl text-gray-900"
-                            onClick={patchRom}>Patch ROM
-                        </button>
+                               className="bg-gray-600 px-4 py-2 rounded font-heading text-white text-2xl mr-4 w-1/2"/>
+                        <Button onClick={patchRom}>Patch ROM</Button>
                     </div>
-
-                    <p className="text-white font-semibold py-4 text-lg">Must be a valid Ocarina of Time 1.0 (US) ROM.</p>
+                    <Paragraph>Must be a valid Ocarina of Time 1.0 (US) ROM.</Paragraph>
                 </React.Fragment>
-            }
+            ) : (
+                <LogOutput/>
+            )}
 
-            {outRom !== null &&
-                <React.Fragment>
-                    <button
-                        className="bg-yellow-300 border-4 border-yellow-500 px-4 py-2 rounded font-heading text-2xl text-gray-900"
-                        onClick={downloadPatchedRom}>Download ROM
-                    </button>
-
-                    <p className="font-semibold text-blue-500 my-2">
-                        If you are playing on Wii Virtual Console, you will need to inject the patched ROM into a WAD
-                        file yourself using a tool like
-                        {" "}
-                        <a href="https://github.com/krimtonz/gzinject"
-                           className="underline text-yellow-400">gzinject</a>.
-                        {" "}
-                        We are looking to implement WAD injection in the future. Our apologies for the inconvenience.
-                    </p>
-                </React.Fragment>
-            }
+            {outRom !== null && (
+                <Button onClick={downloadPatchedRom}>Download ROM</Button>
+            )}
         </div>
     );
 }

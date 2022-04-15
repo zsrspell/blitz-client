@@ -8,7 +8,7 @@ interface SeedInformationProps {
 
 export default function SeedInformation(props: SeedInformationProps) {
     return (
-        <div>
+        <div className="mb-12">
             <Heading>Seed Information</Heading>
 
             <div className="grid grid-cols-5 text-white text-lg">
