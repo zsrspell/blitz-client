@@ -1,6 +1,9 @@
 import React from "react";
 import {generateSeed, Seed} from "../lib/seed";
 import {useRouter} from "next/router";
+import Heading from "./typography/Heading";
+import Paragraph from "./typography/Paragraph";
+import Button from "./ui/Button";
 
 export default function SeedGenerator() {
     const router = useRouter();
@@ -18,31 +21,29 @@ export default function SeedGenerator() {
 
     return (
         <div className="my-8">
-            <h1 className="font-heading text-yellow-300 text-4xl tracking-wide font-bold">
-                Welcome to Triforce Blitz!
-            </h1>
+            <Heading>Welcome to Triforce Blitz!</Heading>
 
-            <p className="text-white text-lg leading-8 my-4 text-justify">
+            <Paragraph>
                 Triforce Blitz is a fresh, fast-paced take on Ocarina of Time Randomizer. In Triforce Blitz, you must
                 help Link find the triforces of Wisdom, Courage and Power that are hidden somewhere in Hyrule!
                 Fortunately, the Gossip Stones across Hyrule will help you locate them with very powerful hints.
-            </p>
+            </Paragraph>
 
             <div className="text-center mt-8">
                 {!working ? (
                     <div className="flex flex-col items-center">
-                        <button onClick={onButtonClicked}
-                                className="bg-yellow-300 border-4 w-96t border-white px-4 py-2 rounded font-heading text-2xl text-gray-900">
-                            Play Triforce Blitz now!
-                        </button>
+                        <Button onClick={onButtonClicked}>Play Triforce Blitz now!</Button>
+
                         <label className="text-white font-heading tracking-wide my-3">
-                            <input type="checkbox" onChange={ev => setGenerateLog(ev.target.checked)} checked={generateLog}/>
-                                Generate a spoiler log for the seed.
+                            <input type="checkbox" onChange={ev => setGenerateLog(ev.target.checked)}
+                                   checked={generateLog}/>
+                            Generate a spoiler log for the seed.
                         </label>
                     </div>
                 ) : (
-                    <div className="font-heading text-3xl text-yellow-300 tracking-wide">Please wait, generating your
-                        seed...</div>
+                    <div className="font-heading text-3xl text-yellow-300 tracking-wide">
+                        Please wait, generating your seed...
+                    </div>
                 )}
             </div>
         </div>
