@@ -5,37 +5,59 @@ import SeedInformation from "../../components/SeedInformation";
 import Patcher from "../../components/Patcher";
 import SpoilerLog from "../../components/spoiler-log";
 import Head from "next/head";
+import Heading from "../../components/typography/Heading";
 
 export interface SeedPageProps {
-    seed: Seed;
-    spoilerLog: Record<string, any> | null;
+    seedId: string;
 }
 
 export default function SeedPage(props: SeedPageProps) {
-    const filename = "TriforceBlitz_" + props.seed.generatedOn;
+    const [filename, setFilename] = React.useState("TriforceBlitz");
+    const [spoilerLog, setSpoilerLog] = React.useState<Record<string, any> | null>(null);
+    const [seed, setSeed] = React.useState<Seed | undefined>(undefined);
 
-    return (
-        <div>
-            <Head>
-                <title>Triforce Blitz Patcher</title>
-            </Head>
+    React.useEffect(() => {
+        getSpoilerLog(props.seedId)
+            .then(log => {
+                setSpoilerLog(log);
+            });
+    }, [props.seedId]);
 
-            <Patcher seed={props.seed} />
-            <SeedInformation seed={props.seed}/>
-            <SpoilerLog spoilerLog={props.spoilerLog} outFilename={filename} seedId={props.seed.id}/>
-        </div>
-    );
+    React.useEffect(() => {
+        getSeed(props.seedId)
+            .then(res => {
+                setSeed(res);
+                setFilename("TriforceBlitz_" + res.generatedOn);
+            });
+    }, [props.seedId]);
+
+    if (seed === undefined) {
+        return (
+            <div className="text-center">
+                <Heading>Loading seed, please wait...</Heading>
+            </div>
+        );
+    } else {
+        return (
+            <div>
+                <Head>
+                    <title>Triforce Blitz Patcher</title>
+                </Head>
+
+                <Patcher seed={seed}/>
+                <SeedInformation seed={seed}/>
+                <SpoilerLog spoilerLog={spoilerLog} outFilename={filename} seedId={props.seedId}/>
+            </div>
+        );
+    }
 }
 
 export const getServerSideProps: GetServerSideProps<SeedPageProps> = async context => {
     const id = context.query.id as string;
-    const seed = await getSeed(id);
-    const spoilerLog = await getSpoilerLog(id);
 
     return {
         props: {
-            seed: seed,
-            spoilerLog: spoilerLog,
+            seedId: id,
         }
     }
 }

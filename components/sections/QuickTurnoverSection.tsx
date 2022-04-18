@@ -7,7 +7,7 @@ export default function QuickTurnoverSection() {
     return (
         <div className="flex lg:flex-row flex-col-reverse my-8">
             <div className="min-w-fit mr-16 flex lg:flex-row flex-col items-center lg:block hidden">
-                <Image width={192} height={192} src="/stopwatch.svg" />
+                <Image width={192} height={192} src="/stopwatch.svg" alt="Image of a stopwatch" />
             </div>
             <div>
                 <Heading>Quick Turnover</Heading>
