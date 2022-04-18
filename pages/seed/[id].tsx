@@ -4,6 +4,7 @@ import {getSeed, getSpoilerLog, Seed} from "../../lib/seed";
 import SeedInformation from "../../components/SeedInformation";
 import Patcher from "../../components/Patcher";
 import SpoilerLog from "../../components/spoiler-log";
+import Head from "next/head";
 
 export interface SeedPageProps {
     seed: Seed;
@@ -15,6 +16,10 @@ export default function SeedPage(props: SeedPageProps) {
 
     return (
         <div>
+            <Head>
+                <title>Triforce Blitz Patcher</title>
+            </Head>
+
             <Patcher seed={props.seed} />
             <SeedInformation seed={props.seed}/>
             <SpoilerLog spoilerLog={props.spoilerLog} outFilename={filename} seedId={props.seed.id}/>
