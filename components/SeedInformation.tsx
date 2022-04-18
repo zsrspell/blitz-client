@@ -1,6 +1,7 @@
 import React from "react";
 import {Seed} from "../lib/seed";
 import Heading from "./typography/Heading";
+import Datetime from "./ui/Datetime";
 
 interface SeedInformationProps {
     seed: Seed;
@@ -27,10 +28,14 @@ export default function SeedInformation(props: SeedInformationProps) {
                 <div className="col-span-4 font-mono">{props.seed.randomizerVersion}</div>
 
                 <div className="col-span-1 font-bold">Requested At</div>
-                <div className="col-span-4 font-mono">{new Date(props.seed.requestedOn).toLocaleString()}</div>
+                <div className="col-span-4 font-mono">
+                    <Datetime datetime={props.seed.requestedOn}/>
+                </div>
 
                 <div className="col-span-1 font-bold">Generated At</div>
-                <div className="col-span-4 font-mono">{new Date(props.seed.generatedOn).toLocaleString()}</div>
+                <div className="col-span-4 font-mono">
+                    <Datetime datetime={props.seed.generatedOn}/>
+                </div>
             </div>
         </div>
     )
