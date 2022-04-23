@@ -14,7 +14,7 @@ export default function HowToPlayPage() {
                 <title>How to Play</title>
                 <meta property="og:url"
                       content="https://blitz.c0hesion.com/how-to-play"/>
-                <meta property="og:site_name" content="Triforce Blitz" />
+                <meta property="og:site_name" content="Triforce Blitz"/>
                 <meta property="og:title" content="How to play Triforce Blitz"/>
                 <meta property="og:description" content="A beginner's guide to playing Triforce Blitz."/>
             </Head>
@@ -52,10 +52,11 @@ export default function HowToPlayPage() {
             <Subheading>How to Find the Triforce Pieces</Subheading>
 
             <Paragraph>
-                The three Triforce Pieces are each hidden in one of Hyrule&apos;s many dungeons, but only the dungeons
-                that can reward either a Spiritual Stone or a Medallion. Those being Inside the Deku Tree,
-                Dodongo&apos;s Cavern, Inside Jabu-Jabu&apos;s Belly, the Forest Temple, the Fire Temple, the Water
-                Temple, the Spirit Temple, and the Shadow Temple.
+                The three Triforce Pieces are each hidden in one of Hyrule&apos;s many dungeons, including those that do
+                not reward a Spiritual Stone or Medallion. Those being Inside the Deku Tree,
+                Dodongo&apos;s Cavern, Inside Jabu-Jabu&apos;s Belly, Forest Temple, Fire Temple, Water
+                Temple, Spirit Temple, Shadow Temple, Bottom of the Well, Gerudo Training Grounds, Ice Cavern, and
+                Ganon&apos;s Castle.
                 The Triforce Piece can be anywhere in its respective dungeon, and isn&apos;t just limited to being
                 found on the final boss of the dungeon.
             </Paragraph>
@@ -157,10 +158,11 @@ export default function HowToPlayPage() {
                 </li>
                 <li>The adult trading quest has been reduced to merely the Claim Check.</li>
                 <li>Link only has to collect 3 cuccos for Anju in Kakariko Village to get her reward.</li>
+                <li>The reward for the frog fly-eating minigame (also known as Frogs 2) has been disabled.</li>
                 <li>Link will always start as an adult in the Temple of Time.</li>
-                <li>The rewards from collecting 30, 40 and 50 Golden Skulltullas have been removed.</li>
-                <li>Checks involving the Skull Mask and Mask of Truth have been removed.</li>
-                <li>The chest in Jabu-Jabu&apos;s Belly that rewards the Boomerang has been removed.</li>
+                <li>The rewards from collecting 30, 40 and 50 Golden Skulltullas have been disabled.</li>
+                <li>Checks involving the Skull Mask and Mask of Truth have been disabled.</li>
+                <li>The chest in Jabu-Jabu&apos;s Belly that rewards the Boomerang has been disabled.</li>
                 <li>The Gold Scale is no longer considered a logical entry to the Water Temple, but it is still
                     allowed for the player to enter the Water Temple with it.
                 </li>
@@ -177,7 +179,9 @@ export default function HowToPlayPage() {
                 <li>Up to 10 Path hints, one of which is always located outside the Temple of Time.</li>
                 <li>Up to 5 Barren hints.</li>
                 <li>3 always hints: Ocarina of Time song, Nocturne of Shadows song, 20 Skulls.</li>
-                <li>At least 1 sometimes hint, with extra being available if there are less than 10 path hints.</li>
+                <li>At least 1 sometimes hint, with extra being available if there are less than 10 path hints or 5
+                    barren hints.
+                </li>
                 <li>Path hints will always prioritize dungeon locations over Overworld locations.</li>
                 <li>Barren hints will always prioritize dungeon locations over Overworld locations.</li>
                 <li>There is no limit to the amount of dungeons that may be hinted by Path and Barren hints.</li>

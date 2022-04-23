@@ -46,8 +46,8 @@ export default function SeedPage(props: SeedPageProps) {
                     <meta property="og:url"
                           content={`https://blitz.c0hesion.com/seed/${props.seedId}`}/>
                     <meta property="og:site_name" content="Triforce Blitz" />
-                    <meta property="og:title" content={`Triforce Blitz Seed: ${seed.id}`}/>
-                    <meta property="og:description" content={"Hash: " + seed.hash.join(", ")}/>
+                    <meta property="og:title" content="Triforce Blitz Seed"/>
+                    <meta property="og:description" content={`Play Triforce Blitz seed ${props.seedId}`}/>
                 </Head>
 
                 <Patcher seed={seed}/>
