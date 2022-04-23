@@ -2,10 +2,21 @@ import React from "react";
 import Heading from "../components/typography/Heading";
 import Paragraph from "../components/typography/Paragraph";
 import Subheading from "../components/typography/Subheading";
+import Head from "next/head";
 
 export default function RulesPage() {
     return (
         <div>
+            <Head>
+                <title>Triforce Blitz Rules</title>
+
+                <meta property="og:url"
+                      content="https://blitz.c0hesion.com/rules"/>
+                <meta property="og:site_name" content="Triforce Blitz" />
+                <meta property="og:title" content="Triforce Blitz Ruleset"/>
+                <meta property="og:description" content="Competitive ruleset for Triforce Blitz."/>
+            </Head>
+
             <Heading>Triforce Blitz Rules</Heading>
             <Paragraph>
                 The Triforce Blitz Standard ruleset follows the same rules as the{" "}
@@ -46,6 +57,7 @@ export default function RulesPage() {
                 </div>
 
                 <table className="min-w-fit ml-8">
+                    <tbody>
                     <tr>
                         <td></td>
                         <th className="border border-yellow-300 p-2 bg-gray-700 text-yellow-300">Racer A</th>
@@ -70,6 +82,7 @@ export default function RulesPage() {
                         <td className="border border-yellow-300 p-2 bg-gray-700">1:45:00</td>
                         <td className="border border-yellow-300 p-2 bg-gray-700">Not Found</td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
         </div>

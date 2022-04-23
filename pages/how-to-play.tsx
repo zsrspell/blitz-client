@@ -5,11 +5,21 @@ import Subheading from "../components/typography/Subheading";
 import YoutubeEmbed from "../components/ui/YoutubeEmbed";
 import OotHint from "../components/OotHint";
 import Image from "next/image";
+import Head from "next/head";
 
 export default function HowToPlayPage() {
     return (
         <div>
-            <Heading>How to play</Heading>
+            <Head>
+                <title>How to Play</title>
+                <meta property="og:url"
+                      content="https://blitz.c0hesion.com/how-to-play"/>
+                <meta property="og:site_name" content="Triforce Blitz" />
+                <meta property="og:title" content="How to play Triforce Blitz"/>
+                <meta property="og:description" content="A beginner's guide to playing Triforce Blitz."/>
+            </Head>
+
+            <Heading>How to Play</Heading>
 
             <Paragraph>
                 Triforce Blitz is an exciting, fast-paced take on Ocarina of Time Randomizer that was designed with
@@ -194,5 +204,5 @@ export default function HowToPlayPage() {
                 </div>
             </div>
         </div>
-)
+    )
 }

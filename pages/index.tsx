@@ -10,6 +10,12 @@ export default function HomePage() {
         <div>
             <Head>
                 <title>Triforce Blitz</title>
+
+                <meta property="og:url"
+                      content="https://blitz.c0hesion.com"/>
+                <meta property="og:site_name" content="Triforce Blitz" />
+                <meta property="og:title" content="Triforce Blitz"/>
+                <meta property="og:description" content="A fast-paced, competitive, exciting take on Ocarina of Time randomizer."/>
             </Head>
 
             <SeedGenerator/>
