@@ -135,6 +135,41 @@ export default function HowToPlayPage() {
                 <YoutubeEmbed videoId="o6F_msuiY2k"/>
             </div>
 
+            <Subheading>Way of the Wanderer</Subheading>
+
+            <div className="flex flex-row">
+                <div className="flex-grow">
+                    <Paragraph>
+                        Another new hint type in Triforce Blitz is the Wanderer hint.  A Wanderer hint points to 
+                        a location with an item that is collected in the seed's playthrough, but is not on the Path
+                        to a Triforce piece.  These hints might point to helpful items like Bomb Bags, Hookshots, or
+                        Strength Upgrades, but they could also point to less helpful items like Wallets or Tunics.  
+                    </Paragraph>
+                </div>
+
+                <div className="flex flex-col ml-16 min-h-full hidden 2xl:block">
+                    <OotHint>
+                        They say that <span className="text-blue-400">Lon Lon Ranch</span> is on the 
+                        way of the wanderer.
+                    </OotHint>
+                </div>
+            </div>
+
+            <Paragraph>
+                Use your discretion when deciding whether to chase Wanderer locations.  Wanderer hints are
+                prioritized above Sometimes hints and will fill slots left empty from a shortage of Path or Barren
+                hints.  However, there will always be room for at least one Wanderer hint as long as a hintable Wanderer 
+                location exists.
+            </Paragraph>
+
+            <Paragraph>
+                See the video below for a more detailed discussion of the Wanderer hints.
+            </Paragraph>
+
+            <div className="flex flex-col items-center my-12">
+                <YoutubeEmbed videoId="2BFtOSIw_Nw"/>
+            </div>
+
             <Subheading>Differences from Ocarina of Time Randomizer</Subheading>
 
             <Paragraph>
@@ -179,9 +214,12 @@ export default function HowToPlayPage() {
                 <li>Up to 10 Path hints, one of which is always located outside the Temple of Time.</li>
                 <li>Up to 5 Barren hints.</li>
                 <li>3 always hints: Ocarina of Time song, Nocturne of Shadows song, 20 Skulls.</li>
-                <li>At least 1 sometimes hint, with extra being available if there are less than 10 path hints or 5
-                    barren hints.
+                <li>At least 1 Wanderer hint, with extra being available if there are less
+                    than 10 Path hints or 5 Barren hints.  Wanderer hints are duplicated as
+                    space allows, but there will always be one Wanderer hint without a duplicate.
                 </li>
+                <li>Sometimes hints fill any remaining gossip stones after all Path, Barren, and Wanderer 
+                    hints have been placed.</li>
                 <li>Path hints will always prioritize dungeon locations over Overworld locations.</li>
                 <li>Barren hints will always prioritize dungeon locations over Overworld locations.</li>
                 <li>There is no limit to the amount of dungeons that may be hinted by Path and Barren hints.</li>
